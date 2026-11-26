@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>envkey</title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+  <body>
+    <header>
+      <h1>envkey</h1>
+      <input id="search" type="search" placeholder="Filter by words, e.g. staging database" autocomplete="off" spellcheck="false" autofocus />
+      <span id="count"></span>
+      <button id="new" type="button">New secret</button>
+    </header>
+    <main>
+      <nav id="list" aria-label="Secrets"></nav>
+      <section id="detail" aria-live="polite"></section>
+    </main>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>

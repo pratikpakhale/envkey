@@ -1,0 +1,11 @@
+{
+  "name": "envkey",
+  "version": "0.1.0",
+  "description": "A local secret store for coding agents, on top of gopass",
+  "license": "MIT",
+  "private": true,
+  "type": "module",
+  "bin": { "envkey": "bin/envkey.mjs" },
+  "scripts": { "test": "node --test" },
+  "engines": { "node": ">=22" }
+}
