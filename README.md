@@ -73,20 +73,12 @@ store takes about a minute and later runs are instant.
 
 ## Telling your agent
 
-Add something like this to the agent's instructions (`~/.claude/CLAUDE.md`, `AGENTS.md`, ...):
+[`skills/envkey/SKILL.md`](skills/envkey/SKILL.md) is an agent skill with the rules: look in the store before
+asking, never let a value reach the chat, and store any password the agent creates. Link it where your agent loads
+skills, for example for Claude Code:
 
-```md
-`envkey` is my local secret store (`envkey help`). Use it whenever a task needs a key, token or password.
-
-1. Look before asking or hunting through files: `envkey ls <words>` lists names only. Paths that end in the same
-   `=N` hold the same value; `envkey same PATH` lists them.
-2. A secret's value must never show up in the chat or in a command's output. `envkey get PATH` prints the value,
-   so never run it on its own:
-   - To use the value in a command, capture it: `TOKEN="$(envkey get PATH)"`, then use `$TOKEN`.
-   - To send it to another program or machine, pipe it: `envkey get PATH | ssh box 'cat > /path/file'`.
-   - To put it in an env file: `printf 'NAME=%s\n' "$(envkey get PATH)" >> .env.local`.
-   - To see which key it is or compare two, without the value: `envkey info PATH`.
-3. When you create a password or token, keep it with `envkey gen PATH` or `envkey set`, not in a loose text file.
+```sh
+ln -s "$PWD/envkey/skills/envkey" ~/.claude/skills/envkey
 ```
 
 This is an instruction, not a sandbox: an agent that can run `envkey get` can read any value in the store.
